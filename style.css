@@ -1,0 +1,10 @@
+/* now we will add css to the body to make canvas visible and remove the preadded margin from the canvas */
+body{
+    margin: 0;
+    background: rgb(46, 97, 49);
+    overflow: hidden;
+    text-align: center;
+}
+#myCanvas{
+    background: rgb(86, 102, 91);
+}
