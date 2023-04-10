@@ -9,10 +9,11 @@ class Car {
         this.height = height;
 
         this.speed=0;
-        this.accelerations=0.6;
+        this.accelerations=0.2;
         this.maxspeed=3;
         this.friction=0.02;
 
+        this.angle=0;
         this.controls = new Controls();
     }
     // => means event here is function. basically function(event), but by doing this, 'this' stops reffering to the constructor
@@ -44,22 +45,27 @@ class Car {
         // left and right controls.
 
         if(this.controls.left){
-            this.x-=2;
+            this.angle-=0.03;
         }
         if(this.controls.right){
-            this.x+=2;
+            this.angle+=0.03;
         }
     }
 
     draw(ctx) {
+        // rotation for angle
+        ctx.save();
+        ctx.translate(this.x,this.y);
+        ctx.rotate(-this.angle)
         ctx.beginPath();
         ctx.rect(
-            this.x - this.width / 2,
-            this.y - this.height / 2,
+            -this.width/2,
+            -this.height/2,
             this.width,
             this.height
         );
         ctx.fill();
+        ctx.restore(); 
     }
 
 }
