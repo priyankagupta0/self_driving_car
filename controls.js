@@ -24,8 +24,9 @@ class Controls{
                     this.reverse=true;
                     break;
             }
-            console.table(this);
+            // console.table(this);
         }
+        
         document.onkeyup=(event)=>{
             switch(event.key){
                 case "ArrowLeft":
@@ -40,8 +41,9 @@ class Controls{
                 case "ArrowDown":
                     this.reverse=false;
                     break;
-            } 
-            console.table(this);
+            }
+            // console.table(this);
         }
+        
     }
-} 
+}

@@ -1,24 +1,65 @@
 
-class Car{
+class Car {
     // constructor is a special method of a class for creating and initializing an object instance of that class
     //these are the properties of the car
-    constructor(x,y,width,height){
-        this.x=x;
-        this.y=y;
-        this.width=width;
-        this.height=height;
+    constructor(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+
+        this.speed=0;
+        this.accelerations=0.6;
+        this.maxspeed=3;
+        this.friction=0.02;
 
         this.controls = new Controls();
     }
-    draw(ctx){
+    // => means event here is function. basically function(event), but by doing this, 'this' stops reffering to the constructor
+
+    update(){
+        if(this.controls.forward){
+            this.speed+=this.accelerations;
+        }
+        if (this.controls.reverse) {
+            this.speed-=this.accelerations;
+        }
+        if (this.speed>this.maxspeed){
+            this.y=this.maxspeed;
+        } 
+        if(this.speed<-this.maxspeed/2){
+            this.speed=-this.maxspeed/2;
+        }
+        if(this.speed>0){
+            this.speed-=this.friction;
+        }
+        if(this.speed<0){
+            this.speed+=this.friction;
+        }
+
+        if(Math.abs(this.speed)<this.friction){
+            this.speed=0;
+        }
+        this.y-=this.speed;
+        // left and right controls.
+
+        if(this.controls.left){
+            this.x-=2;
+        }
+        if(this.controls.right){
+            this.x+=2;
+        }
+    }
+
+    draw(ctx) {
         ctx.beginPath();
         ctx.rect(
-            this.x-this.width/2,
-            this.y-this.height/2,
+            this.x - this.width / 2,
+            this.y - this.height / 2,
             this.width,
             this.height
         );
         ctx.fill();
-    } 
+    }
 
 }
