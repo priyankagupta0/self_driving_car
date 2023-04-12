@@ -7,16 +7,19 @@ class Car{
             // constructor is a special method of a class for creating and initializing an object instance of that class
         //these are the properties of the car
         this.speed=0;
-        this.acceleration=0.7;
+        this.acceleration=0.8;
         this.maxSpeed=4;
         this.friction=0.05;
         this.angle=0;
+
+        this.sensor=new Sensor(this);
 
         this.controls=new Controls();
     }
 
     update(){
         this.#move();
+        this.sensor.update();
     }
         // => means event here is function. basically function(event), but by doing this, 'this' stops reffering to the constructor
 
@@ -79,5 +82,7 @@ class Car{
         ctx.fill();
 
         ctx.restore();
+
+        this.sensor.draw(ctx);
     }
 }
