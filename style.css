@@ -1,10 +1,32 @@
 /* now we will add css to the body to make canvas visible and remove the preadded margin from the canvas */
 body{
-    margin: 0;
-    background: rgb(46, 97, 49);
-    overflow: hidden;
-    text-align: center;
+    margin:0;
+    background:rgb(36, 94, 36);
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
-#myCanvas{
-    background: rgb(86, 102, 91);
+
+#verticalButtons{
+    display:flex;
+    flex-direction:column;
+}
+
+button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px 7px 5px;
+    margin: 2px;
+    cursor:pointer;
+}
+button:hover{
+    background:blue;
+}
+
+#networkCanvas{
+    background:black;
+}
+#carCanvas{
+    background:lightgray;
 }
